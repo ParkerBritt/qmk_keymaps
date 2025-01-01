@@ -9,11 +9,11 @@
 
 enum layers {
     _BASE,
+    _GAMING,
+    _HOUDINI,
     _LOWER,
     _RAISE,
     _ADJUST,
-    _GAMING,
-    _HOUDINI,
     _SWITCHER
 };
 
@@ -151,7 +151,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = { // default
 
     [_ADJUST] = LAYOUT_split_3x6_3( // adjust
   //,-----------------------------------------------------.                    ,-----------------------------------------------------.
-  TG(_GAMING),TG(_HOUDINI), XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                     QK_BOOT, XXXXXXX, XXXXXXX, XXXXXXX,KC_MEDIA_PREV_TRACK,KC_MEDIA_NEXT_TRACK,
+  TO(_BASE), TO(_GAMING),TO(_HOUDINI), XXXXXXX, XXXXXXX, XXXXXXX,                      QK_BOOT, XXXXXXX, XXXXXXX, XXXXXXX,KC_MEDIA_PREV_TRACK,KC_MEDIA_NEXT_TRACK,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
       RM_TOGG, RM_HUEU, RM_SATU, RM_VALU, XXXXXXX, KC_HOME,                       KC_END, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
@@ -168,7 +168,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = { // default
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
       KC_LSFT,   KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,                         KC_N,    KC_M, KC_COMM,  KC_DOT, KC_SLSH,  KC_ENT,
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
-                                          KC_LGUI,  TG(_GAMING),  KC_SPC,    KC_BSPC,MO(_ADJUST), KC_RALT
+                                          KC_LGUI,  _______,  KC_SPC,    KC_BSPC,_______, KC_RALT
                                       //`--------------------------'  `--------------------------'
   ),
   [_HOUDINI] = LAYOUT_split_3x6_3(
@@ -179,20 +179,20 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = { // default
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
       KC_LSFT,    KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,                         KC_N,    KC_M, KC_COMM,  KC_DOT, KC_SLSH,  KC_ENT,
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
-                                          KC_LGUI,   TG(_HOUDINI),  KC_SPC,    KC_BSPC,MO(_SWITCHER), KC_RALT
+                                          KC_LGUI,  _______,  KC_SPC,    KC_BSPC,_______, KC_RALT
                                       //`--------------------------'  `--------------------------'
 
   ),
-  [_SWITCHER] = LAYOUT_split_3x6_3(
-  //,-----------------------------------------------------.                    ,-----------------------------------------------------.
-     TO(_GAMING),TO(_HOUDINI),KC_W, KC_E,    KC_R,    KC_T,                         KC_Y,    KC_U,    KC_I,    KC_O,   KC_P,   KC_ESC,
-  //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-      KC_LCTL,   GUI_A,   ALT_S,   SFT_D,    CTL_F,   KC_G,                         KC_H,    KC_J,    KC_K,    KC_L, KC_SCLN, KC_QUOT,
-  //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-      KC_LSFT,    KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,                         KC_N,    KC_M, KC_COMM,  KC_DOT, KC_SLSH,  KC_ENT,
-  //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
-                                          KC_LGUI,   TG(_HOUDINI),  KC_SPC,    KC_BSPC,MO(_ADJUST), KC_RALT
-                                      //`--------------------------'  `--------------------------'
+  // [_SWITCHER] = LAYOUT_split_3x6_3(
+  // //,-----------------------------------------------------.                    ,-----------------------------------------------------.
+  //    TO(_GAMING),TO(_HOUDINI),KC_W, KC_E,    KC_R,    KC_T,                         KC_Y,    KC_U,    KC_I,    KC_O,   KC_P,   KC_ESC,
+  // //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
+  //     KC_LCTL,   GUI_A,   ALT_S,   SFT_D,    CTL_F,   KC_G,                         KC_H,    KC_J,    KC_K,    KC_L, KC_SCLN, KC_QUOT,
+  // //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
+  //     KC_LSFT,    KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,                         KC_N,    KC_M, KC_COMM,  KC_DOT, KC_SLSH,  KC_ENT,
+  // //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
+  //                                         KC_LGUI,   TG(_BASE),  KC_SPC,    KC_BSPC,MO(_ADJUST), KC_RALT
+  //                                     //`--------------------------'  `--------------------------'
 
-  ),
+  // ),
 };
