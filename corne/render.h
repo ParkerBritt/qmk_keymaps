@@ -112,7 +112,7 @@ void render_gaming(void) {
     oled_write_raw_P(gaming, sizeof(gaming));
 }
 
-void render_switcher(void) {
+void render_switch(void) {
     static const char PROGMEM image[] = {
         0x00, 0xfe, 0x02, 0xf2, 0x92, 0x12, 0x92, 0xf2, 0x02, 0xf2, 0x92, 0x12, 0x92, 0xf2, 0x02, 0xf2,
         0x92, 0x12, 0x92, 0xf2, 0x02, 0xf2, 0x92, 0x12, 0x92, 0xf2, 0x02, 0xfe, 0x5a, 0x5a, 0xfe, 0x00,
@@ -129,11 +129,14 @@ void render_switcher(void) {
 
 void oled_render_boot(bool bootloader) {
     oled_clear();
-    oled_set_cursor(0, 3);
     if (bootloader) {
-        oled_write_P(PSTR("-----\nREADY\n TO  \nFLASH\nFIRM\n-----"), false);
+        oled_set_cursor(0, 1);
+        oled_write_P(PSTR("READY\n TO  \nFLASH\nFIRM"), false);
+        oled_set_cursor(0, 7);
+        render_switch();
     } else {
-        oled_write_P(PSTR("Reboot"), false);
+        oled_set_cursor(0, 3);
+        oled_write_P(PSTR("-----\nReboot\n-----"), false);
     }
     oled_render_dirty(true);
 }

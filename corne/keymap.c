@@ -14,7 +14,6 @@ enum layers {
     _LOWER,
     _RAISE,
     _ADJUST,
-    _SWITCHER
 };
 
 // ----- oled -------
@@ -38,13 +37,10 @@ static void render_icon(void) {
             render_gaming();
             break;
         case _ADJUST:
-            render_switcher();
+            render_switch();
             break;
         case _HOUDINI:
             render_houdini();
-            break;
-        case _SWITCHER:
-            render_switcher();
             break;
         default:
             oled_write_P(PSTR("Undefined"), false);
@@ -70,9 +66,6 @@ static void render_layer_status(void) {
             break;
         case _HOUDINI:
             oled_write_P(PSTR("Layer-----hdini"), false);
-            break;
-        case _SWITCHER:
-            oled_write_P(PSTR("Layer-----switcher"), false);
             break;
         default:
             oled_write_P(PSTR("Undefined"), false);
@@ -137,6 +130,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = { // default
                                       //`--------------------------'  `--------------------------'
   ),
 
+    // TODO: maybe add functions keys as holds on numbers here
     [_RAISE] = LAYOUT_split_3x6_3( // raise
   //,-----------------------------------------------------.                    ,-----------------------------------------------------.
        KC_TAB,    KC_1,    KC_2,    KC_3,    KC_4,    KC_5,                         KC_6,    KC_7,    KC_8,    KC_9,    KC_0,KC_MEDIA_PLAY_PAUSE,
@@ -183,16 +177,4 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = { // default
                                       //`--------------------------'  `--------------------------'
 
   ),
-  // [_SWITCHER] = LAYOUT_split_3x6_3(
-  // //,-----------------------------------------------------.                    ,-----------------------------------------------------.
-  //    TO(_GAMING),TO(_HOUDINI),KC_W, KC_E,    KC_R,    KC_T,                         KC_Y,    KC_U,    KC_I,    KC_O,   KC_P,   KC_ESC,
-  // //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-  //     KC_LCTL,   GUI_A,   ALT_S,   SFT_D,    CTL_F,   KC_G,                         KC_H,    KC_J,    KC_K,    KC_L, KC_SCLN, KC_QUOT,
-  // //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-  //     KC_LSFT,    KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,                         KC_N,    KC_M, KC_COMM,  KC_DOT, KC_SLSH,  KC_ENT,
-  // //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
-  //                                         KC_LGUI,   TG(_BASE),  KC_SPC,    KC_BSPC,MO(_ADJUST), KC_RALT
-  //                                     //`--------------------------'  `--------------------------'
-
-  // ),
 };
