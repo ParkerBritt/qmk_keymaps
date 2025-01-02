@@ -132,7 +132,7 @@ void oled_render_boot(bool bootloader) {
     if (bootloader) {
         oled_set_cursor(0, 1);
         oled_write_P(PSTR("READY\n TO  \nFLASH\nFIRM"), false);
-        oled_set_cursor(0, 7);
+        oled_set_cursor(0, 8);
         render_switch();
     } else {
         oled_set_cursor(0, 3);
