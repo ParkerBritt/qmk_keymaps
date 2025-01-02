@@ -25,13 +25,13 @@ oled_rotation_t oled_init_user(oled_rotation_t rotation) {
 static void render_icon(void) {
     switch (get_highest_layer(layer_state)) {
         case _BASE:
-			render_kitty_anim();
+            render_base_layer();
             break;
         case _LOWER:
-            render_lower();
+            render_lower_layer();
             break;
         case _RAISE:
-            render_raise();
+            render_raise_layer();
             break;
         case _GAMING:
             render_gaming();
@@ -48,28 +48,32 @@ static void render_icon(void) {
 }
 
 static void render_layer_status(void) {
+    render_line();
+    oled_set_cursor(0,1);
     switch (get_highest_layer(layer_state)) {
         case _BASE:
-            oled_write_P(PSTR("Layer-----base"), false);
+            oled_write_P(PSTR("base"), false);
             break;
         case _LOWER:
-            oled_write_P(PSTR("Layer-----lower"), false);
+            oled_write_P(PSTR("lower"), false);
             break;
         case _RAISE:
-            oled_write_P(PSTR("Layer-----raise"), false);
+            oled_write_P(PSTR("raise"), false);
             break;
         case _GAMING:
-            oled_write_P(PSTR("Layer-----game"), false);
+            oled_write_P(PSTR("game"), false);
             break;
         case _ADJUST:
-            oled_write_P(PSTR("Layer-----adjst"), false);
+            oled_write_P(PSTR("adjst"), false);
             break;
         case _HOUDINI:
-            oled_write_P(PSTR("Layer-----hdini"), false);
+            oled_write_P(PSTR("hdini"), false);
             break;
         default:
-            oled_write_P(PSTR("Undefined"), false);
+            oled_write_P(PSTR("Undef"), false);
     }
+    oled_set_cursor(0,2);
+    render_line();
 }
 
 // #ifdef OLED_DRIVER_ENABLE
@@ -102,8 +106,6 @@ bool shutdown_user(bool jump_to_bootloader) {
 // #endif
 
 
-// TODO: add houdini layer (F2, delete)
-// TODO: add function keys
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = { // default
     [_BASE] = LAYOUT_split_3x6_3(
   //,-----------------------------------------------------.                    ,-----------------------------------------------------.
@@ -130,7 +132,6 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = { // default
                                       //`--------------------------'  `--------------------------'
   ),
 
-    // TODO: maybe add functions keys as holds on numbers here
     [_RAISE] = LAYOUT_split_3x6_3( // raise
   //,-----------------------------------------------------.                    ,-----------------------------------------------------.
        KC_TAB,    KC_1,    KC_2,    KC_3,    KC_4,    KC_5,                         KC_6,    KC_7,    KC_8,    KC_9,    KC_0,KC_MEDIA_PLAY_PAUSE,
@@ -169,9 +170,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = { // default
   //,-----------------------------------------------------.                    ,-----------------------------------------------------.
        KC_TAB,    KC_Q,    KC_W,    KC_E,    KC_R,    KC_Y,                         KC_Y,    KC_U,    KC_I,    KC_O,   KC_P,   KC_ESC,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-      KC_LCTL,   GUI_A,   ALT_S,   SFT_D,    CTL_F,   KC_G,                         KC_H,    KC_J,    KC_K,    KC_L, KC_SCLN, KC_QUOT,
+      KC_LCTL,   GUI_A,   ALT_S,   SFT_D,    CTL_F,  KC_F2,                         KC_H,    KC_J,    KC_K,    KC_L, KC_SCLN, KC_QUOT,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-      KC_LSFT,    KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,                         KC_N,    KC_M, KC_COMM,  KC_DOT, KC_SLSH,  KC_ENT,
+      KC_LSFT,    KC_Z,    KC_X,    KC_C,    KC_V,KC_DELETE,                         KC_N,    KC_M, KC_COMM,  KC_DOT, KC_SLSH,  KC_ENT,
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
                                           KC_LGUI,  _______,  KC_SPC,    KC_BSPC,_______, KC_RALT
                                       //`--------------------------'  `--------------------------'
