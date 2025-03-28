@@ -5,5 +5,27 @@
 </p>
 
 My personal keymaps that i use on my keyboards
-- lily58
-- corne
+<table>
+  <thead>
+    <tr>
+      <th>Keyboard</th>
+      <th># of Keys</th>
+      <th>Layout Style</th>
+      <th>Split Type</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><a href="https://github.com/ParkerBritt/qmk_keymaps/tree/main/corne">Corne</a></td>
+      <td>42</td>
+      <td>Ortholinear</td>
+      <td>Fully Split</td>
+    </tr>
+    <tr>
+      <td><a href="https://github.com/ParkerBritt/qmk_keymaps/tree/main/lily58">Lily58</a></td>
+      <td>58</td>
+      <td>Ortholinear</td>
+      <td>Fully Split</td>
+    </tr>
+  </tbody>
+</table>
