@@ -4,7 +4,7 @@
   <img src="https://parkerbritt.com/badge?label=QMK&icon=qmk&color=333333">
 </p>
 
-My personal keymaps that i use on my keyboards
+The QMK keymaps that i use to flash the microcontrollers on my custom built keyboards
 <table>
   <thead>
     <tr>
