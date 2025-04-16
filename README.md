@@ -4,7 +4,7 @@
   <a href="https://docs.qmk.fm/"><img src="https://parkerbritt.com/badge?label=QMK&icon=qmk&color=333333"></a>
 </p>
 
-The QMK keymaps that i use to flash the microcontrollers on my custom built keyboards
+The  <a href="https://docs.qmk.fm/">QMK</a> keymaps that i use to flash the microcontrollers on my custom built keyboards
 <table>
   <thead>
     <tr>
